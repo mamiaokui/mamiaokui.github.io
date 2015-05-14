@@ -1,8 +1,106 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
-<html>
- <head>
-  <title>hello world</title>
- </head>
- <body>
-   Hello World
-</body></html>
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Our Love Story</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<style type="text/css">
+		@font-face {
+			font-family: digit;
+			src: url('digital-7_mono.ttf') format("truetype");
+		}
+	</style>
+	<link href="css/default.css" type="text/css" rel="stylesheet">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/garden_dev.js"></script>
+    <script type="text/javascript" src="js/functions_dev.js"></script>
+    <BGSOUND src="music.mp3" loop=infinite>
+</head>
+
+<body>
+	<div id="mainDiv">
+		<div id="content">
+			<div id="code">
+				<span class="space"/><span class="comments"> Dear Sue,</span><br />
+				<span class="space"/><span class="comments"> I write to cellebrate our half month memorial day.</span><br />
+				<span class="space"/><span class="comments"></span><br />
+				<span class="space"/><span class="comments"> I met you on 2014 April 1th,</span><br />
+				<span class="space"/><span class="comments"> from then on I can never forget your smilling dimples.</span><br />
+				<span class="space"/><span class="comments"> And I fall in love with you.</span><br />
+				<span class="space"/><span class="comments"></span><br />
+				<span class="space"/><span class="comments"> 2014 April 20th, I told you I love you.</span><br />
+				<span class="space"/><span class="comments"> Luckily, you accepted and became my girlfriend eversince.</span><br />
+				<span class="space"/><span class="comments"></span><br />
+				<span class="space"/><span class="comments"> You are such an lovely girl,</span><br />
+				<span class="space"/><span class="comments"> thank you for give me such a happy life,</span><br />
+				<span class="space"/><span class="comments"> all the happy time will save in my memory forever.</span><br />
+				<span class="space"/><span class="comments"></span><br />
+				<span class="space"/><span class="comments"> How time flies,</span><br />
+				<span class="space"/><span class="comments"> 2015 May 10th, we got marryed,</span><br />
+				<span class="space"/><span class="comments"> I am such a lucky man,</span><br />
+				<span class="space"/><span class="comments"> and I am willing to give my whole life to you.</span><br />
+				<span class="space"/><span class="comments"></span><br />
+				<span class="space"/><span class="comments"> We will live happily ever after.</span><br />
+				<span class="space"/><span class="comments"></span><br />
+				<span class="space"/><span class="comments"> I am sure, Promise me!</span><br />
+			</div>
+			<div id="loveHeart">
+				<canvas id="garden"></canvas>
+				<div id="words">
+					<div id="messages">
+						SueLam, I have fallen in love with you for
+						<div id="elapseClock"></div>
+					</div>
+					<div id="loveu">
+						Love u forever and ever.<br/>
+						<div class="signature">- Chris Ma</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="copyright">
+          Chris & Sue
+          <embed autoplay="true" src="music.mp3" width="1" height="1" />
+		</div>
+	</div>
+	<script type="text/javascript">
+		var offsetX = $("#loveHeart").width() / 2;
+		var offsetY = $("#loveHeart").height() / 2 - 55;
+		var displayMode = 1;
+		var together = new Date();
+		together.setFullYear(2014, 4, 1);
+		together.setHours(20);
+		together.setMinutes(0);
+		together.setSeconds(0);
+		together.setMilliseconds(0);
+		
+		$("#loveHeart").click(function(){
+			displayMode *= -1;
+			timeElapse(together, displayMode);
+		});
+		
+		if (!document.createElement('canvas').getContext) {
+			var msg = document.createElement("div");
+			msg.id = "errorMsg";
+			msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+			document.body.appendChild(msg);
+			$("#code").css("display", "none")
+			$("#copyright").css("position", "absolute");
+			$("#copyright").css("bottom", "10px");
+		    document.execCommand("stop");
+		} else {
+			setTimeout(function () {
+				adjustWordsPosition();
+				startHeartAnimation();
+			}, 5000);
+
+			timeElapse(together, displayMode);
+			setInterval(function () {
+				timeElapse(together, displayMode);
+			}, 500);
+
+			adjustCodePosition();
+			$("#code").typewriter();
+		}
+	</script>
+</body>
+</html>
